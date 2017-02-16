@@ -17,3 +17,4 @@
 - "╠" -> "►" black right-pointing pointer U+25BA, тоньше U+25B6, но работает в консоли Windows 10
 - "╣" -> "◄" black left-pointing pointer U+25BA, тоньше U+25C0, но работает в консоли Windows 10
 - "•" -> "‐" hyphen U+2010
+- " T16 >" -> ""
