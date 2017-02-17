@@ -3859,157 +3859,136 @@ MSX-BASIC. Программы  на  языке  BASIC  и  подпрограм
 |  FD99 |     1 | DEVICE | ID устройства для cartrige 0-3
 
 
+### ЛОВУШКИ
+
+Ловушки (hooks, хуки) предназначены для перехвата переходов на
+подпрограммы. Обычно они содержат команду возврата или рестарта,
+вместо которой можно поставить команду перехода на свою
+подпрограмму. На каждую ловушку отводится по 5 байт.
+
+
+|     Адрес | Имя     | Подпрограмма | Содержимое
+|----------:|:--------|:-------------|:-----------
+|      FD9A | H.KEYI  | MSXIO        | начало подпрограммы обработки прерываний MSXIO. Например, от RS232C
+|      FD9F | H.TIMI  | MSXIO        | начало программы обработки прерываний от таймера
+|      FDA4 | H.CHPH  | MSXIO        | начало CHPUT подпрограмм (вывод одного символа на текстовый экран, в регистре A - код символа)
+|      FDA9 | H.DSPC  | MSXIO        | начало отображения курсора (Вывод курсора после вывода одного символа на текстовый экран)
+|      FDAE | H.ERAC  | MSXIO        | начало уничтожения курсора (Уничтожение курсора перед выводом одного символа на текстовый экран)
+|      FDB3 | H.DSPF  | MSXIO        | начало отображения функциональной клавиши
+|      FDB8 | H.ERAF  | MSXIO        | начало уничтожения функциональной клавиши
+|      FDBD | H.TOTE  | MSXIO        | начало перехода в текстовый режим
+|      FDC2 | H.CHGE  | MSXIO        | начало ввода символа (CHGET)
+|      FDC7 | H.INIP  | MSXIO        | начало подпрограммы, инициализирующей образы символов. Определение альтернативного набора символов.
+|      FDCC | H.KEYC  | MSXIO        | подпрограмма кодирования клавиш. Изменяет действие клавиши
+|      FDD1 | H.KYEA  | MSXIO        | подпрограмма NMI,присваивающая клавишам функцию. Изменяет действие клавиши (key easy).
+|      FDD6 | H.NMI   | MSXIO        | немаскируемые прерывания (NMI)
+|      FDDB | H.PINL  | MSXINL       | ввод строки программы (program line), PINLIN
+|      FDE0 | H.QINL  | MSXINL       | знак вопроса и ввод строки
+|      FDE5 | H.INLI  | MSXINL       | ввод строки
+|      FDEA | H.ONGO  | MSXSTS       | ON GOTO
+|      FDEF | H.DSKO  | MSXSTS       | DSKO$
+|      FDF4 | H.SETS  | MSXSTS       | установка атрибутов
+|      FDF9 | H.NAME  | MSXSTS       | RENAME,NAME
+|      FDFE | H.KILL  | MSXSTS       | KILL
+|      FE03 | H.IPL   | MSXSTS       | начальная загрузка программы, IPL
+|      FE08 | H.COPY  | MSXSTS       | COPY
+|      FE0D | H.CMD   | MSXSTS       | расширенная команда, CMD
+|      FE12 | H.DSKF  | MSXSTS       | DISK FREE, DSKF
+|      FE17 | H.DSKI  | MSXSTS       | DSKI$
+|      FE1C | H.ATTR  | MSXSTS       | ATTR$
+|      FE21 | H.LSET  | MSXSTS       | LSET
+|      FE26 | H.RSET  | MSXSTS       | RSET
+|      FE2B | H.FIEL  | MSXSTS       | FIELD
+|      FE30 | H.MKI$  | MSXSTS       | MKI$
+|      FE35 | H.MKS$  | MSXSTS       | MKS$
+|      FE3A | H.MKD$  | MSXSTS       | MKD$
+|      FE3F | H.CVI   | MSXSTS       | CVI
+|      FE44 | H.CVS   | MSXSTS       | CVS
+|      FE49 | H.CVD   | MSXSTS       | CVD
+|      FE4E | H.GETP  | SPCDSK       | ввести указатель файла (GETPTR)
+|      FE53 | H.SETF  | SPCDSK       | установить указатель файла
+|      FE58 | H.NOFO  | SPCDSK       | NO FOR. При открытии файла не указан режим ввода/вывода
+|      FE5D | H.NOLO  | SPCDSK       | NOLL FILE OPEN, открыт неиспользуемый файл
+|      FE62 | H.NTFL  | SPCDSK       | файл не номер 0
+|      FE67 | H.MERG  | SPCDSK       | MERGE
+|      FE6C | H.SAVE  | SPCDSK       | сохранить BASIC-программу. SAVE
+|      FE71 | H.BINS  | SPCDSK       | BSAVE
+|      FE76 | H.BINL  | SPCDSK       | BLOAD
+|      FE7B | H.FILE  | SPCDSK       | FILES
+|      FE80 | H.DGET  | SPCDSK       | DISK GET
+|      FE85 | H.FILO  | SPCDSK       | FILE OUT 1, вывод в файл
+|      FE8A | H.INDS  | SPCDSK       | ввод символа (атрибута) диска
+|      FE8F | H.RSLF  | SPCDSK       | RE-SELECT OLD DRIVE, INPUT$
+|      FE94 | H.SAVD  | SPCDSK       | SAVE CURRENT DRIVE
+|      FE99 | H.LOC   | SPCDSK       | LOC$
+|      FE9E | H.LOF   | SPCDSK       | LOF
+|      FEA3 | H.EOF   | SPCDSK       | EOF
+|      FEA8 | H.FPOS  | SPCDSK       | позиция файла (FROS)
+|      FEAD | H.BAKU  | SPCDSK       | BACK UP
+|      FEB2 | H.PARD  | SPCDEV       | Анализирует имя устройства, ввод имени периферийного устройства
+|      FEB7 | H.NODE  | SPCDEV       | Имя не является подтвержденным именем устройства. NODEVN (no device name) routine.
+|      FEBC | H.POSD  | SPCDEV       | POSSIBLY DISK
+|      FEC1 | H.DEVN  | SPCDEV       | Имя устройства подтверждено. Определение новых имен, обработка имени устройства
+|      FEC6 | H.GEND  | SPCDEV       | GENERAL DEVICE DISPAT CHR. Устройство не является дисководом. Приписывание устройства
+|      FECB | H.RUNC  | BIMISC       | NEW, RUN Clear
+|      FED0 | H.CLEA  | BIMISC       | CLEAR
+|      FED5 | H.LOPD  | BIMISC       | SET LOOP AND DEFAULT VALUE
+|      FEDA | H.STKE  | BIMISC       | STACK ERROR FEDF H.ISFL IS FILE. Хук запуска после перезагрузки
+|      FEDF | H.ISFL  | BIMISC       | ISFLIO (есть файл I/O или нет)
+|      FEE4 | H.OUTD  | BIO          | Вывод символов. Выполнение OUT
+|      FEE9 | H.CRDO  | BIO          | CRDO (выполнение CRlf)
+|      FEEE | H.DSKC  | BIO          | DSKCHI (ввод атрибута (символа) диска)
+|      FEF3 | H.DOGR  | GENGRP       | DOGRPH (выполнение графической операции)
+|      FEF8 | H.PRGE  | BINTRP       | PRGEND (конец программы, END)
+|      FEFD | H.ERRP  | BINTRP       | ERRPRT (печать, вывод ошибки)
+|      FF02 | H.ERRF  | BINTRP       | подпрограмма обработки ошибки
+|      FF07 | H.READ  | BINTRP       | вход ready, подпрограмма вывода сообщения "Ok"
+|      FF0C | H.MAIN  | BINTRP       | вход в MAIN
+|      FF11 | H.DIRD  | BINTRP       | вход DIRDO (выполнение прямого оператора)
+|      FF16 | H.FINI  | BINTRP       | 
+|      FF1B | H.FINE  | BINTRP       | 
+|      FF20 | H.CRUN  | BINTRP       | 
+|      FF25 | H.CRUS  | BINTRP       | 
+|      FF2A | H.ISRE  | BINTRP       | 
+|      FF2F | H.NTFN  | BINTRP       | 
+|      FF34 | H.NOTR  | BINTRP       | 
+|      FF39 | H.SNGF  | BINTRP       | 
+|      FF3E | H.NEWS  | BINTRP       | 
+|      FF43 | H.GONE  | BINTRP       | 
+|      FF48 | H.CHRG  | BINTRP       | подпрограмма CHRGET
+|      FF4D | H.RETU  | BINTRP       | RETURN
+|      FF52 | H.PRTF  | BINTRP       | PRINT
+|      FF57 | H.COMP  | BINTRP       | 
+|      FF5C | H.FINP  | BINTRP       | 
+|      FF61 | H.TRMN  | BINTRP       | 
+|      FF66 | H.FRME  | BINTRP       | 
+|      FF6B | H.NTPL  | BINTRP       | 
+|      FF70 | H.EVAL  | BINTRP       | 
+|      FF75 | H.OKNO  | BINTRP       | 
+|      FF7A | H.FING  | BINTRP       | 
+|      FF7F | H.ISMI  | BINTRP       | MID$ или нет
+|      FF84 | H.WIDT  | BINTRP       | WIDTH
+|      FF89 | H.LIST  | BINTRP       | LIST или LLIST
+|      FF8E | H.BUFL  | BINTRP       | BUFLIN (строка буфера)
+|      FF93 | H.FRQI  | BINTRP       | POKE, FRQINT, подпрограмма преобразования в целое
+|      FF98 | H.SCNE  | BINTRP       | 
+|      FF9D | H.FRET  | BISTRG       | FRETMP, free up to temporaries
+|      FFA2 | H.PTRG  | BIPTRG       | PTRGET, получение указателя
+|      FFA7 | H.PHYD  | MSXIO        | PHYDIO, физический  ввод/вывод с диска (BIOS 144h)
+|      FFAC | H.FORM  | MSXIO        | FORMAT, форматирование диска
+|      FFB1 | H.ERRO  | BINTRP       | ERROR, обработка ошибки
+|      FFB6 | H.LPTO  | MSXIO        | LPTOUT, вывод символа на принтер
+|      FFBB | H.LPTS  | MSXIO        | LPTSTT, проверка статуса принтера
+|      FFC0 | H.SCRE  | MSXSTS       | SCREEN
+|      FFC5 | H.PLAY  | MSXSTS       | PLAY
+|      FFCA | H.EBIOS | EBIOS        | ловушка расширенных BIOS
+|      FFCF | DISINT  | DOS          | отключение прерываний
+| FFD0-FFD3 |         | резерв       | 
+|      FFD4 | ENAINT  | DOS          | обеспечение прерываний, окончание чтения диска
+| FFD5-FFE6 |         | резерв       |
+
 **TBC**    
 
-                            ЛОВУШКИ
-
-   Ловушки (hooks, хуки) предназначены для перехвата переходов  на
-подпрограммы. Обычно они содержат команду возврата  или  рестарта,
-вместо  которой  можно  поставить   команду   перехода   на   свою
-подпрограмму. На каждую ловушку отводится по 5 байт.
-───────────────────────────────────────────────────────────────
-FD9A H.KEYI MSXIO начало подпрограммы обработки прерываний MSXIO.
-                  Например, от RS232C
-FD9F H.TIMI MSXIO начало программы обработки прерываний от таймера
-FDA4 H.CHPH MSXIO начало CHPUT подпрограмм (вывод одного символа
-                  на текстовый экран, в регистре A - код символа)
-FDA9 H.DSPC MSXIO начало отображения курсора (Вывод курсора после
-                  вывода одного символа на текстовый экран)
-FDAE H.ERAC MSXIO начало уничтожения курсора (Уничтожение курсора
-                  перед выводом одного символа на текстовый экран)
-FDB3 H.DSPF MSXIO начало отображения функциональной клавиши
-                              83  
-
-FDB8 H.ERAF MSXIO начало уничтожения функциональной клавиши
-FDBD H.TOTE MSXIO начало перехода в текстовый режим
-FDC2 H.CHGE MSXIO начало ввода символа (CHGET)
-FDC7 H.INIP MSXIO начало подпрограммы, инициализирующей образы
-                  символов. Определение альтернативного набора
-                  символов.
-FDCC H.KEYC MSXIO подпрограмма кодирования клавиш. Изменяет
-                  действие клавиши
-FDD1 H.KYEA MSXIO подпрограмма NMI,присваивающая клавишам функцию.
-                  Изменяет действие клавиши (key easy).
-FDD6 H.NMI  MSXIO немаскируемые прерывания (NMI)
-FDDB H.PINL MSXINL ввод строки программы (program line), PINLIN
-FDE0 H.QINL MSXINL знак вопроса и ввод строки
-FDE5 H.INLI MSXINL ввод строки
-FDEA H.ONGO MSXSTS ON GOTO
-FDEF H.DSKO MSXSTS DSKO$
-FDF4 H.SETS MSXSTS установка атрибутов
-FDF9 H.NAME MSXSTS RENAME,NAME
-FDFE H.KILL MSXSTS KILL
-FE03 H.IPL  MSXSTS начальная загрузка программы, IPL
-FE08 H.COPY MSXSTS COPY
-FE0D H.CMD  MSXSTS расширенная команда, CMD
-FE12 H.DSKF MSXSTS DISK FREE, DSKF
-FE17 H.DSKI MSXSTS DSKI$
-FE1C H.ATTR MSXSTS ATTR$
-FE21 H.LSET MSXSTS LSET
-FE26 H.RSET MSXSTS RSET
-FE2B H.FIEL MSXSTS FIELD
-FE30 H.MKI$ MSXSTS MKI$
-FE35 H.MKS$ MSXSTS MKS$
-FE3A H.MKD$ MSXSTS MKD$
-FE3F H.CVI  MSXSTS CVI
-FE44 H.CVS  MSXSTS CVS
-FE49 H.CVD  MSXSTS CVD
-FE4E H.GETP SPCDSK ввести указатель файла (GETPTR)
-FE53 H.SETF SPCDSK установить указатель файла
-FE58 H.NOFO SPCDSK NO FOR. При открытии файла не указан режим
-                   ввода/вывода
-FE5D H.NOLO SPCDSK NOLL FILE OPEN, открыт неиспользуемый файл
-FE62 H.NTFL SPCDSK файл не номер 0
-                              84  
-
-FE67 H.MERG SPCDSK MERGE
-FE6C H.SAVE SPCDSK сохранить BASIC-программу. SAVE
-FE71 H.BINS SPCDSK BSAVE
-FE76 H.BINL SPCDSK BLOAD
-FE7B H.FILE SPCDSK FILES
-FE80 H.DGET SPCDSK DISK GET
-FE85 H.FILO SPCDSK FILE OUT 1, вывод в файл
-FE8A H.INDS SPCDSK ввод символа (атрибута) диска
-FE8F H.RSLF SPCDSK RE-SELECT OLD DRIVE, INPUT$
-FE94 H.SAVD SPCDSK SAVE CURRENT DRIVE
-FE99 H.LOC  SPCDSK LOC$
-FE9E H.LOF  SPCDSK LOF
-FEA3 H.EOF  SPCDSK EOF
-FEA8 H.FPOS SPCDSK позиция файла (FROS)
-FEAD H.BAKU SPCDSK BACK UP
-FEB2 H.PARD SPCDEV Анализирует имя устройства, ввод имени
-                   периферийного устройства
-FEB7 H.NODE SPCDEV Имя не является подтвержденным именем
-                   устройства. NODEVN (no device name) routine.
-FEBC H.POSD SPCDEV POSSIBLY DISK
-FEC1 H.DEVN SPCDEV Имя устройства подтверждено. Определение
-                   новых имен, обработка имени устройства
-FEC6 H.GEND SPCDEV GENERAL DEVICE DISPAT CHR. Устройство
-                   не является дисководом. Приписывание устройства
-FECB H.RUNC BIMISC NEW, RUN Clear
-FED0 H.CLEA BIMISC CLEAR
-FED5 H.LOPD BIMISC SET LOOP AND DEFAULT VALUE
-FEDA H.STKE BIMISC STACK ERROR FEDF H.ISFL IS FILE. Хук запуска
-                   после перезагрузки
-FEDF H.ISFL BIMISC ISFLIO (есть файл I/O или нет)
-FEE4 H.OUTD BIO    Вывод символов. Выполнение OUT
-FEE9 H.CRDO BIO    CRDO (выполнение CRlf)
-FEEE H.DSKC BIO    DSKCHI (ввод атрибута (символа) диска)
-FEF3 H.DOGR GENGRP DOGRPH (выполнение графической операции)
-FEF8 H.PRGE BINTRP PRGEND (конец программы, END)
-FEFD H.ERRP BINTRP ERRPRT (печать, вывод ошибки)
-FF02 H.ERRF BINTRP подпрограмма обработки ошибки
-FF07 H.READ BINTRP вход ready, подпрограмма вывода сообщения "Ok"
-FF0C H.MAIN BINTRP вход в MAIN
-FF11 H.DIRD BINTRP вход DIRDO (выполнение прямого оператора)
-                              85  
-
-FF16 H.FINI BINTRP
-FF1B H.FINE BINTRP
-FF20 H.CRUN BINTRP
-FF25 H.CRUS BINTRP
-FF2A H.ISRE BINTRP
-FF2F H.NTFN BINTRP
-FF34 H.NOTR BINTRP
-FF39 H.SNGF BINTRP
-FF3E H.NEWS BINTRP
-FF43 H.GONE BINTRP
-FF48 H.CHRG BINTRP подпрограмма CHRGET
-FF4D H.RETU BINTRP RETURN
-FF52 H.PRTF BINTRP PRINT
-FF57 H.COMP BINTRP
-FF5C H.FINP BINTRP
-FF61 H.TRMN BINTRP
-FF66 H.FRME BINTRP
-FF6B H.NTPL BINTRP
-FF70 H.EVAL BINTRP
-FF75 H.OKNO BINTRP
-FF7A H.FING BINTRP
-FF7F H.ISMI BINTRP MID$ или нет
-FF84 H.WIDT BINTRP WIDTH
-FF89 H.LIST BINTRP LIST или LLIST
-FF8E H.BUFL BINTRP BUFLIN (строка буфера)
-FF93 H.FRQI BINTRP POKE, FRQINT, подпрограмма преобразования
-                   в целое
-FF98 H.SCNE BINTRP
-FF9D H.FRET BISTRG FRETMP, free up to temporaries
-FFA2 H.PTRG BIPTRG PTRGET, получение указателя
-FFA7 H.PHYD MSXIO  PHYDIO, физический  ввод/вывод с диска
-                   (BIOS 144h)
-FFAC H.FORM MSXIO  FORMAT, форматирование диска
-FFB1 H.ERRO BINTRP ERROR, обработка ошибки
-FFB6 H.LPTO MSXIO  LPTOUT, вывод символа на принтер
-FFBB H.LPTS MSXIO  LPTSTT, проверка статуса принтера
-FFC0 H.SCRE MSXSTS SCREEN
-FFC5 H.PLAY MSXSTS PLAY
-FFCA H.EBIOS EBIOS ловушка расширенных BIOS
-FFCF DISINT  DOS   отключение прерываний
-                              86  
-
-FFD0-FFD3          резерв
-FFD4 ENAINT  DOS   обеспечение прерываний, окончание чтения диска
-FFD5-FFE6          резерв
-───────────────────────────────────────────────────────────────
 
            ОБЛАСТЬ СОХРАНЕНИЯ РЕГИСТРОВ VDP V9938 MSX-2
 
