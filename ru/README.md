@@ -20,6 +20,7 @@
 - "╣" -> "◄" black left-pointing pointer U+25BA, тоньше U+25C0, но работает в консоли Windows 10
 - "•" -> "‐" hyphen U+2010
 - " T16 >" -> ""
+- "Ў" -> "-" or "~" depending on context
 
 
 ## [Программирование на языке ассемблера в системе MSX-2](z80-fb-1991-ru.md)
