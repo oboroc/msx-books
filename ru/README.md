@@ -29,4 +29,6 @@
 
 ## Разрешение на распространение и перевод
 
-[Кирилл Фахрутдинов разрешил распространять и переводить его книги!](kirill-fakhroutdinov-permission.png)
+16 Февраля 2017-го года Кирилл Фахрутдинов разрешил распространять и переводить его книги про MSX!
+
+![Kirill Fakhroutdinov permission](kirill-fakhroutdinov-permission.png)
