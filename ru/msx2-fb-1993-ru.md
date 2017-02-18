@@ -8151,8 +8151,38 @@ DE. Устанавливает позицию записи в  поле  зап�
 
 
 ## Пересылки
-**TBC**
 
+| Название подпрограммы | Адрес | Выполняемые действия | Тип    | Изменяемые регистры |
+|:----------------------|------:|:---------------------|:-------|:-------------------:|
+| MAF                   | 2C4Dh | ARG := DAC           | Double | A,B,D,E,H,L         |
+| MAM                   | 2C50h | ARG := (HL)          | Double | A,B,D,E,H,L         |
+| MOV8DH                | 2C53h | (DE) := (HL)         | Double | A,B,D,E,H,L         |
+| MFA                   | 2C59h | DAC := ARG           | Double | A,B,D,E,H,L         |
+| MFM                   | 2C5Ch | DAC := (HL)          | Double | A,B,D,E,H,L         |
+| MMF                   | 2C67h | (HL):= DAC           | Double | A,B,D,E,H,L         |
+| MOV8HD                | 2C6Ah | (HL) := (DE)         | Double | A,B,D,E,H,L         |
+| XTF                   | 2C6Fh | (SP) := DAC          | Double | A,B,D,E,H,L         |
+| PHA                   | 2CC7h | ARG := (SP)          | Double | A,B,D,E,H,L         |
+| PHF                   | 2CCCh | DAC := (SP)          | Double | A,B,D,E,H,L         |
+| PPA                   | 2CDCh | (SP) := ARG          | Double | A,B,D,E,H,L         |
+| PPF                   | 2CE1h | (SP) := DAC          | Double | A,B,D,E,H,L         |
+| PUSHF                 | 2EB1h | DAC := (SP)          | Single | D,E                 |
+| MOVFM                 | 2EBEh | DAC := (HL)          | Single | B,C,D,E,H,L         |
+| MOVFR                 | 2EC1h | DAC := (CBED)        | Single | D,E                 |
+| MOVRF                 | 2ECCh | (CBED) := DAC        | Single | B,C,D,E,H,L         |
+| MOVRMI                | 2ED6h | (CBED) := (HL)       | Single | B,C,D,E,H,L         |
+| MOVRM                 | 2EDFh | (BCDE) := (HL)       | Single | B,C,D,E,H,L         |
+| MOVMF                 | 2EE8h | (HL) := DAC          | Single | B,C,D,E,H,L         |
+| MOVE                  | 2EEBh | (HL) := (DE)         | Single | B,C,D,E,H,L         |
+| VMOVAM                | 2EEFh | ARG := (HL)          | VALTYP | B,C,D,E,H,L         |
+| MOVVFM                | 2EF2h | (DE) := (HL)         | VALTYP | B,C,D,E,H,L         |
+| VMOVE                 | 2EF3h | (HL) := (DE)         | VALTYP | B,C,D,E,H,L         |
+| VMOVFA                | 2F05h | DAC := ARG           | VALTYP | B,C,D,E,H,L         |
+| VMOVFM                | 2F08h | DAC := (HL)          | VALTYP | B,C,D,E,H,L         |
+| VMOVAF                | 2F0Dh | ARG := DAC           | VALTYP | B,C,D,E,H,L         |
+| VMOVMF                | 2F10h | (HL) := DAC          | VALTYP | B,C,D,E,H,L         |
+
+```
 ┌────────┬───────┬────────────────┬────────┬──────────────────┐
 │Название│       │                │        │                  │
 │ подпро-│ Адрес │   Выполняемые  │  Тип   │    Изменяемые    │
@@ -8186,6 +8216,7 @@ DE. Устанавливает позицию записи в  поле  зап�
 │ VMOVAF │ 2F0Dh │   ARG := DAC   │ VALTYP │    B,C,D,E,H,L   │
 │ VMOVMF │ 2F10h │   (HL):= DAC   │ VALTYP │    B,C,D,E,H,L   │
 └────────┴───────┴────────────────┴────────┴──────────────────┘
+```
 
 
                          Сравнения
