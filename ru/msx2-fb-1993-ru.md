@@ -9598,6 +9598,191 @@ S7: C7  C6  C5  C4 C3  C2  C1  C0  цветовой код для Графики
 таблицу PIT, и соответствующие входные точки (адреса) в
 интерпретаторе.
 
+|  Имя   |  Код  | Адрес     |
+|:-------|------:|----------:|
+| ABS    | FF 86 | 2E82      |   
+| AND    |    F6 |           |   
+| ASC    | FF 95 | 680B      |   
+| ATN    | FF 8E | 2A14      |   
+| ATTR$  |    E9 | 7C43      |   
+| AUTO   |    A9 | 49B5      |   
+| BASE   |    C9 | 7B5A/7BCB |   
+| BEEP   |    C0 | 00C0      |   
+| BIN$   | FF 9D | 65FF      |   
+| BLOAD  |    CF | 6EC6      |   
+| BSAVE  |    D0 | 6E92      |   
+| CALL   |    CA | 55A8      |   
+| CDBL   | FF A0 | 303A      |   
+| CINT   | FF 9E | 2F8A      |   
+| CIRCLE |    BC | 5B11      |   
+| CHR$   | FF 96 | 681B      |   
+| CLEAR  |    92 | 64AF      |   
+| CLOAD  |    9B | 703F      |   
+| CLS    |    9F | 00C3      |   
+| CMD    |    D7 | 7C34      |   
+| COLOR  |    BD | 7980      |   
+| CONT   |    99 | 6424      |   
+| COPY   |    D6 | 7C2F      |   
+| COS    | FF 8C | 2993      |   
+| CRSLIN |    E8 | 790A      |   
+| CSAVE  |    9A | 6F87      |   
+| CSNG   | FF 9F | 2FB2      |   
+| CVD    | FF AA | 7C70      |   
+| CVI    | FF A8 | 7C66      |   
+| CVS    | FF A9 | 7C6B      |   
+| DATA   |    84 | 485B      |
+| DEF    |    97 | 5010      |
+| DEFDBL |    AE | 4721      |
+| DEFINT |    AC | 471B      |
+| DEFSNG |    AD | 471E      |
+| DEFSTR |    AB | 4718      |
+| DELETE |    A8 | 53E2      |
+| DIM    |    86 | 5E9F      |
+| DRAW   |    BE | 5D6E      |
+| DSKF   | FF A6 | 7C39      |
+| DSKI$  |    EA | 7C3E      |
+| DSKO$  |    D1 | 7C16      |
+| ELSE   |    A1 | 485D      |
+| END    |    81 | 63EA      |
+| ERASE  |    A5 | 6477      |
+| ERL    |    E1 | 4E0B      |
+| ERR    |    E2 | 4DFD      |
+| ERROR  |    A6 | 49AA      |
+| EOF    | FF AB | 6D25      |
+| EQU    |    F9 |           |
+| EXP    | FF 8B | 2B4A      |
+| FIELD  |    B1 | 7C52      |
+| FILES  |    B7 | 6C2F      |
+| FIX    | FF A1 | 30BE      |
+| FN     |    DE | 5040      |
+| FOR    |    82 | 4524      |
+| FPOS   | FF A7 | 6D39      |
+| FRE    | FF 8F | 69F2      |
+| GET    |    B2 | 7758      |   
+| GOSUB  |    8D | 47B2      |   
+| GOTO   |    89 | 47E8      |   
+| HEX$   | FF 9B | 65FA      |  
+| INKEY$ |    EC | 7347      |   
+| INP    | FF 90 | 4001      |   
+| INPUT  |    85 | 4B6C      |   
+| INPUT$ |       | 6C87      |   
+| INSTR  |    E5 | 68EB      |   
+| INT    | FF 85 | 30CF      |   
+| IMP    |    FA |           |   
+| IPL    |    D5 | 7C2A      |   
+| IF     |    8B | 49E5      |   
+| KEY    |    CC | 786C      |   
+| KILL   |    D4 | 7C25      |   
+| LEN    | FF 92 | 67FE      |   
+| LEFT$  | FF 81 | 6861      |   
+| LET    |    88 | 4880      |   
+| LINE   |    AF | 4B0E      |   
+| LIST   |    93 | 522E      |   
+| LFILES |    BB | 6C2A      |   
+| LLIST  |    9E | 5229      |   
+| LOC    | FF AC | 6D03      |   
+| LOG    | FF 8A | 2A72      |   
+| LOF    | FF AD | 6D14      |   
+| LOAD   |    B5 | 6B5D      |   
+| LOCATE |    D8 | 7766      |   
+| LPOS   | FF 9C | 4FC7      |   
+| LPRINT |    9D | 4A1D      |   
+| LSET   |    B8 | 7C48      |   
+| MAX    |    CD | 7E4B      |
+| MERGE  |    B6 | 6B5E      |
+| MID$   | FF 83 | 689A      |
+| MKD$   | FF B0 | 7C61      |
+| MKI$   | FF AE | 7C57      |
+| MKS$   | FF AF | 7C5C      |
+| MOD    |    FB |           |
+| MOTOR  |    CE | 73B7      |
+| NAME   |    D3 | 7C20      |
+| NEW    |    94 | 6286      |
+| NEXT   |    83 | 6527      |
+| NOT    |    E0 | 4F63      |
+| OCT$   | FF 9A | 65F5      |
+| OFF    |    EB |           |
+| ON     |    95 | 48E4      |
+| OPEN   |    B0 | 6AB7      |
+| OR     |    F7 |           |
+| OUT    |    9C | 4016      |
+| PAD    | FF A5 | 7969      |
+| PAINT  |    BF | 59C5      |
+| PDL    | FF A4 | 795A      |
+| PEEK   | FF 97 | 541C      |
+| PLAY   |    C1 | 73E5/791B |
+| POINT  |    ED | 5803      |
+| POKE   |    98 | 5423      |
+| POS    | FF 91 | 4FCC      |
+| PRESET |    C3 | 57E5      |
+| PRINT  |    91 | 4A24      |
+| PSET   |    C2 | 57EA      |
+| READ   |    87 | 4B9F      |
+| RENUM  |    AA | 5468      |   
+| REM    |    8F | 485D      |   
+| RESTORE|    8C | 633C      |   
+| RESUME |    A7 | 4950      |   
+| RIGHT$ | FF 82 | 6891      |   
+| RETURN |    8E | 4821      |   
+| RND    | FF 88 | 2BDF      |   
+| RSET   |    B9 | 7C4D      |   
+| RUN    |    8A | 479E      |   
+| SCREEN |    C5 | 79CC      |   
+| SET    |    D2 | 7C1B      |   
+| SGN    | FF 84 | 2E97      |   
+| SIN    | FF 89 | 29AC      |   
+| SAVE   |    BA | 6BA3      |   
+| SPC    |    DF |           |   
+| SPACE$ | FF 99 | 6848      |   
+| SPRITE |    C7 | 7A48/7A84 |   
+| SOUND  |    C4 | 73CA      |   
+| SQR    | FF 87 | 2AFF      |   
+| STEP   |    DC |           |   
+| STICK  | FF A2 | 7940      |   
+| STOP   |    90 | 63E3      |   
+| STRIG  | FF A3 | 794C      |   
+| STRING$|    E3 | 6829      |   
+| STR$   | FF 93 | 6604      |   
+| SWAP   |    A4 | 643E      |   
+| TAB    |    DB |           |
+| TAN    | FF 8D | 29FB      |
+| THEN   |    DA |           |
+| TIME   |    CB | 7911/7900 |
+| TO     |    D9 |           |
+| TRON   |    A2 | 6438      |
+| TROFF  |    A3 | 6439      |
+| USING  |    E4 |           |
+| USR    |    DD | 4FD5      |
+| VAL    | FF 94 | 68BB      |
+| VARPTR |    E7 | 4E41      |
+| VDP    |    C8 | 7B37/7B47 |
+| VPOKE  |    C6 | 7BE2      |
+| VPEEK  | FF 98 | 7EF5      |
+| WAIT   |    96 | 401C      |
+| WIDTH  |    A0 | 51C9      |
+| XOR    |    F8 |           |
+| 0      |    11 |           |   
+| 1      |    12 |           |   
+| 2      |    13 |           |   
+| 3      |    14 |           |   
+| 4      |    15 |           |   
+| 5      |    16 |           |   
+| 6      |    17 |           |   
+| 7      |    18 |           |   
+| 8      |    19 |           |   
+| 9      |    1A |           |   
+| '      |    E6 |           |
+| >      |    EE |           |
+| =      |    EF |           |
+| <      |    F0 |           |
+| +      |    F1 |           |
+| -      |    F2 |           |
+| *      |    F3 |           |
+| /      |    F4 |           |
+| ^      |    F5 |           |
+| \      |    FC |           |
+|LineFeed|    FD |           |
+
 ```
 ┌────────┬───────┬───────────┬────────┬───────┬───────────┐
 │  Имя   │  Код  │  Адрес    │  Имя   │  Код  │  Адрес    │
