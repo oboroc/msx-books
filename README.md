@@ -13,7 +13,9 @@
 
 Оригиналы в Microsoft Word скачаны с сайта автора: <http://www.kirfa.com/>.
 
-Локальная копия оригиналов: <msx2-fb-1993.doc.zip>, <z80-fb-1991.doc.zip>.
+Локальная копия оригиналов:
+[z80-fb-1991.doc.zip](z80-fb-1991.doc.zip),
+[msx2-fb-1993.doc.zip](msx2-fb-1993.doc.zip).
 
 Изменения между версией Microsoft Word и текстовым файлом:
 
