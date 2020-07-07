@@ -11,7 +11,8 @@
 Дополнительная информация
 -------------------------
 
-Оригиналы в Microsoft Word скачаны с сайта автора: <http://www.kirfa.com/>.
+Оригиналы в Microsoft Word скачаны с сайта автора:
+[www.kirfa.com](https://web.archive.org/web/20100829083837/http://www.kirfa.com/).
 
 Локальная копия оригиналов:
 [z80-fb-1991.doc.zip](z80-fb-1991.doc.zip),
